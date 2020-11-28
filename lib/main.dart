@@ -3,6 +3,9 @@ import "package:flutter/material.dart";
 void main()=>runApp(MyApp());
 
 class MyApp extends StatelessWidget{
+  void answerQuestion(){
+    print("Pressed Button!!");
+  }
   build(context){
     var questions = 
     [
@@ -20,15 +23,15 @@ class MyApp extends StatelessWidget{
           Text("The Questions"),
           RaisedButton(
             child: Text("Questions #1"),
-            onPressed: null
+            onPressed: answerQuestion
           ),
           RaisedButton(
             child: Text("Questions #1"),
-            onPressed: null
+            onPressed: answerQuestion
           ),
           RaisedButton(
             child: Text("Questions #1"),
-            onPressed: null
+            onPressed: answerQuestion
           ),
         ]
       ),
