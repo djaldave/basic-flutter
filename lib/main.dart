@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 class _MyAppState extends State {
   var _questionIndex=0;
-  var _questions=[
+  final _questions= const[
           {
             "question":"What is your favorite Color? ",
             "answer":["blue","black"]
@@ -33,22 +33,23 @@ class _MyAppState extends State {
   void _answerQuestion(){
     setState((){
       _questionIndex = _questionIndex +1;
-      if(_questionIndex == _questions.length){
-        _questionIndex = 0;
-      }
     });
   }
   build(context)  {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text("App")),
-        body: Column(
+        body:_questionIndex < _questions.length?
+        Column(
           children:[
             Question(_questions[_questionIndex]["question"]),
             ...(_questions[_questionIndex]["answer"] as List<String>).map((answer){
               return Answer(_answerQuestion,answer);
             }),
           ],
+        ):
+        Center(
+          child:Text("Well Done"),
         ),
       ),
     );
