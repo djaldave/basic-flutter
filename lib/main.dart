@@ -44,11 +44,17 @@ class _MyAppState extends State {
       print(_totalScore);
     });
   }
+  void _resetQuestion(){
+    setState((){
+        _questionIndex =0;
+        _totalScore =0;
+    });
+  }
   build(context)  {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text("App")),
-        body:_questionIndex < _questions.length? Quiz(questionIndex: _questionIndex,questions: _questions,answerQuestion: _answerQuestion):Result(_totalScore),
+        body:_questionIndex < _questions.length? Quiz(questionIndex: _questionIndex,questions: _questions,answerQuestion: _answerQuestion):Result(_totalScore,_resetQuestion),
       ),
     );
   }
