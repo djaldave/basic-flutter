@@ -3,22 +3,20 @@ import "package:flutter/material.dart";
 void main()=>runApp(MyApp());
 
 class MyApp extends StatefulWidget {
-  State createState(){
-    return MyAppState();
-  }
+  State createState()=>_MyAppState();
 }
-class MyAppState extends State {
-  var questIndex=0;
-  var quest =[
+class _MyAppState extends State {
+  var _questIndex=0;
+  var _quest =[
       "color?",
       "fruit?",
       "food",
     ];
-  void questButt(){
+  void _questButt(){
     setState((){
-      questIndex = questIndex + 1;
-      if(questIndex==quest.length){
-        questIndex =0;
+      _questIndex = _questIndex + 1;
+      if(_questIndex==_quest.length){
+        _questIndex =0;
       }
     });
   }
@@ -30,10 +28,10 @@ class MyAppState extends State {
         ),
         body:Column(
           children:[
-            Text(quest[questIndex]),
+            Text(_quest[_questIndex]),
             RaisedButton(
-              child: Text("Question #1"),
-              onPressed: questButt
+              child: Text("Question"),
+              onPressed: _questButt
             ),
           ],
         ),
