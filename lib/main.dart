@@ -2,41 +2,41 @@ import "package:flutter/material.dart";
 
 void main()=>runApp(MyApp());
 
-class MyApp extends StatelessWidget{
-  void answerQuestion(){
-    print("Pressed Button!!");
+class MyApp extends StatefulWidget {
+  State createState(){
+    return MyAppState();
+  }
+}
+class MyAppState extends State {
+  var questIndex=0;
+  var quest =[
+      "color?",
+      "fruit?",
+      "food",
+    ];
+  void questButt(){
+    setState((){
+      questIndex = questIndex + 1;
+      if(questIndex==quest.length){
+        questIndex =0;
+      }
+    });
   }
   build(context){
-    var questions = 
-    [
-    "What is your favorite fruits?",
-    "What is your favorite Vegetable?",
-    ];
     return MaterialApp(
-      home: Scaffold(
+      home:Scaffold(
         appBar: AppBar(
-          title: Text("Al Dave's App")
+          title: Text("Al Dave"),
         ),
-      body: Column(
-        children: 
-        [
-          Text("The Questions"),
-          RaisedButton(
-            child: Text("Questions #1"),
-            onPressed: () => print("Answered Question #1")
-          ),
-          RaisedButton(
-            child: Text("Questions #2"),
-            onPressed: (){
-              print("Pressed #2");
-            }
-          ),
-          RaisedButton(
-            child: Text("Questions #3"),
-            onPressed: answerQuestion
-          ),
-        ]
-      ),
+        body:Column(
+          children:[
+            Text(quest[questIndex]),
+            RaisedButton(
+              child: Text("Question #1"),
+              onPressed: questButt
+            ),
+          ],
+        ),
       ),
     );
   }
